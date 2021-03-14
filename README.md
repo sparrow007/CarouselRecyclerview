@@ -115,6 +115,11 @@ I would recommend you to use image loading library like Glide for loading image 
 ## Contribute 🤝
 If you like the project and somehow wants to contribute, you are welcome to contribute by either submitting issues, refactor, pull request Thankyou.
 
+## Find this repository useful? ❤️
+Support it by joining __[stargazers](https://github.com/sparrow007/CarouselRecyclerview/stargazers)__ for this repository. :star: <br>
+ And __[follow](https://github.com/sparrow007)__  me for next creation 🤩
+
+
 ## License
 ```xml
 Copyright 2021 Sparrow007 (Ankit kumar)
