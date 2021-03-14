@@ -92,6 +92,26 @@ Method | Description | Default
   
   ```
 
+## Reflection ImageView
+<img src="./preview/reflectionImageVIew.jpg" align="right" width="32%"/>
+You see in the demo that there is a mirror image (reflection imageview), for this i already created custom imageview for this.
+
+
+Use ReflectionImageView in xml layout and provide src
+
+```xml
+ <com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
+     android:layout_width="120dp"
+     android:layout_height="120dp"
+     android:scaleType="fitXY"
+     android:src="@drawable/hacker"
+    />
+```
+
+### Notes about Reflection imageview
+I would recommend you to use image loading library like Glide for loading image in reflection image for better performance
+
+
 
 ## License
 ```xml
