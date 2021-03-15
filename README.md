@@ -16,20 +16,22 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
+![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.0.0)
 [![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
+
 ### Gradle 
 Add below codes to your **root** `build.gradle` file (not your module build.gradle file).
 ```Gradle
 allprojects {
     repositories {
-       maven { url 'https://jitpack.io' }
+            mavenCentral()
     }
 }
 ```
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-  implementation 'com.github.sparrow007:CarouselRecyclerview:1.0.0'
+   implementation 'com.github.sparrow007:carouselrecyclerview:1.0.0'
 }
 ```
 
