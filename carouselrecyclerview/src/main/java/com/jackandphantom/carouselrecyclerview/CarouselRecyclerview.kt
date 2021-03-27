@@ -1,7 +1,10 @@
 package com.jackandphantom.carouselrecyclerview
 
 import android.content.Context
+import android.os.Bundle
+import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 
 class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : RecyclerView(context, attributeSet) {
@@ -9,6 +12,13 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
     /** Create layout manager builder so that we can easily add more methods to it */
     private var carouselLayoutManagerBuilder: CarouselLayoutManager.Builder =
         CarouselLayoutManager.Builder()
+
+    private var layoutManagerState: Parcelable? = null
+
+    companion object {
+        private const val SAVE_SUPER_STATE = "super-state"
+        private const val SAVE_LAYOUT_MANAGER = "layout-manager-state"
+    }
 
     /**
      * Initialize the layout manager and also enable the childDrawingOrder
@@ -111,10 +121,40 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
         getCarouselLayoutManager().setOnSelectedListener(listener)
     }
 
+    override fun onSaveInstanceState(): Parcelable? {
+        val bundle = Bundle()
+        bundle.putParcelable(SAVE_SUPER_STATE, super.onSaveInstanceState())
+
+        bundle.putParcelable(SAVE_LAYOUT_MANAGER, getCarouselLayoutManager().onSaveInstanceState())
+        return bundle
+    }
+
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        if (state is Bundle) {
+            layoutManagerState = state.getParcelable(SAVE_LAYOUT_MANAGER)
+            super.onRestoreInstanceState(state.getParcelable(SAVE_SUPER_STATE))
+
+        }else super.onRestoreInstanceState(state)
+
+    }
+
     /**
      * Get selected position from the layout manager
      * @return center view of the layout manager
      */
     fun getSelectedPosition() = getCarouselLayoutManager().getSelectedPosition()
+
+    private fun restorePosition() {
+        if(layoutManagerState != null) {
+            getCarouselLayoutManager().onRestoreInstanceState(layoutManagerState)
+            layoutManagerState = null
+        }
+    }
+
+    override fun setAdapter(adapter: Adapter<*>?) {
+        super.setAdapter(adapter)
+        restorePosition()
+
+    }
 
 }

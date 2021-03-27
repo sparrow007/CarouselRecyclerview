@@ -3,6 +3,8 @@ package com.jackandphantom.carouselrecyclerview
 import android.animation.Animator
 import android.animation.ValueAnimator
 import android.graphics.Rect
+import android.os.Parcel
+import android.os.Parcelable
 import android.util.SparseArray
 import android.util.SparseBooleanArray
 import android.view.View
@@ -69,6 +71,9 @@ class CarouselLayoutManager constructor(
 
     /** Previous item which was in center in layout manager */
     private var mLastSelectedPosition: Int = 0
+
+    /** Use for restore scrolling in recyclerview at the time of orientation change*/
+    private var isOrientationChange = false
 
     /** Initialize all the attribute from the constructor and also apply some conditions */
     init {
@@ -151,6 +156,12 @@ class CarouselLayoutManager constructor(
         }
 
         detachAndScrapAttachedViews(recycler)
+
+        if (isOrientationChange && selectedPosition != 0) {
+            isOrientationChange = false
+            mOffsetAll = calculatePositionOffset(selectedPosition)
+            onSelectedCallback()
+        }
 
         layoutItems(recycler, state, SCROLL_TO_LEFT)
         this.recycler = recycler
@@ -675,6 +686,44 @@ class CarouselLayoutManager constructor(
 
     interface OnSelected {
         fun onItemSelected(position: Int)
+    }
+
+    override fun onSaveInstanceState(): Parcelable? {
+        return SaveState(selectedPosition)
+    }
+
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        super.onRestoreInstanceState(state)
+        if (state is SaveState) {
+            isOrientationChange = true
+            this.selectedPosition = state.scrollPosition
+        }
+    }
+
+    class SaveState constructor(var scrollPosition:Int = 0) : Parcelable {
+
+        constructor(parcel: Parcel) : this() {
+            scrollPosition = parcel.readInt()
+        }
+
+        override fun describeContents(): Int {
+            return 0
+        }
+
+        override fun writeToParcel(dest: Parcel?, flags: Int) {
+            dest?.writeInt(scrollPosition)
+        }
+
+        companion object CREATOR : Parcelable.Creator<SaveState> {
+            override fun createFromParcel(parcel: Parcel): SaveState {
+                return SaveState(parcel)
+            }
+
+            override fun newArray(size: Int): Array<SaveState?> {
+                return arrayOfNulls(size)
+            }
+        }
+
     }
 
 }
