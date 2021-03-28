@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         list.add(DataModel(R.drawable.hobes, "Thi is cool"))
         list.add(DataModel(R.drawable.guypro, "Thi is cool"))
         list.add(DataModel(R.drawable.joker, "Thi is cool"))
-        list.add(DataModel(R.drawable.justin, "Thi is cool"))
         list.add(DataModel(R.drawable.londonlove, "Thi is cool"))
 
         val adapter = DataAdapter(list)
