@@ -5,6 +5,7 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 </p>
 </br>
 <p align="center">
+  <a href="https://github.com/sparrow007/CarouselRecyclerview/actions"><img alt="Build Status"src="https://github.com/sparrow007/CarouselRecyclerview/workflows/Android%20CI/badge.svg"/></a> 
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
   <a href="http://developer.android.com/index.html"><img alt="License" src="https://img.shields.io/badge/platform-android-green.svg"/></a>
     <a href="https://android-arsenal.com/api?level=16"><img alt="License" src="https://img.shields.io/badge/API-16%2B-brightgreen.svg"/></a>
