@@ -19,7 +19,7 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
-[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.0.0)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.0.0/aar/)
+[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.1.0)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.1.0/aar/)
 [![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
 
 ### Gradle 
@@ -34,7 +34,7 @@ allprojects {
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-   implementation 'com.github.sparrow007:carouselrecyclerview:1.0.0'
+   implementation 'com.github.sparrow007:carouselrecyclerview:1.1.0'
 }
 ```
 
@@ -116,6 +116,10 @@ Use ReflectionImageView in xml layout and provide src
 ### Notes about Reflection imageview
 I would recommend you to use image loading library like Glide for loading image in reflection image for better performance
 
+
+
+### What's New Version 1.1.0 🎉🎉
+Adding Support for orientation changes
 
 ## Contribute 🤝
 If you like the project and somehow wants to contribute, you are welcome to contribute by either submitting issues, refactor, pull request Thankyou.
