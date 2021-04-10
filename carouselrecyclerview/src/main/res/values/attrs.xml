@@ -3,11 +3,6 @@
     <attr name="reflect_relativeDepth" format="float"/>
     <attr name="reflect_gap" format="dimension"/>
 
-    <declare-styleable name="ReflectionViewContainer">
-        <attr name="reflect_relativeDepth"/>
-        <attr name="reflect_gap"/>
-    </declare-styleable>
-
     <declare-styleable name="ReflectionViewContainer_Layout">
         <attr name="reflect_relativeDepth"/>
         <attr name="reflect_gap"/>

@@ -61,11 +61,11 @@ class ReflectionViewContainer : LinearLayout {
             alpha = 0.85f
         }
         addView(mReflect)
-        initFlowLayout(null, R.attr.reflect_reflectionLayoutStyle)
+        initLayout(null)
     }
 
     constructor(context: Context) : super(context, null, R.attr.reflect_reflectionLayoutStyle) {
-        initFlowLayout(null, R.attr.reflect_reflectionLayoutStyle)
+        initLayout(null)
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(
@@ -73,7 +73,7 @@ class ReflectionViewContainer : LinearLayout {
         attrs,
         R.attr.reflect_reflectionLayoutStyle
     ) {
-        initFlowLayout(attrs, R.attr.reflect_reflectionLayoutStyle)
+        initLayout(attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -81,7 +81,7 @@ class ReflectionViewContainer : LinearLayout {
         attrs,
         defStyleAttr
     ) {
-        initFlowLayout(attrs, defStyleAttr)
+        initLayout(attrs)
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -96,27 +96,15 @@ class ReflectionViewContainer : LinearLayout {
         defStyleAttr,
         defStyleRes
     ) {
-        initFlowLayout(attrs, defStyleAttr)
+        initLayout(attrs)
     }
 
-    private fun initFlowLayout(attrs: AttributeSet?, defStyleAttr: Int) {
-        val a = context.obtainStyledAttributes(
-            attrs,
-            R.styleable.ReflectionViewContainer,
-            defStyleAttr,
-            0
-        )
+    private fun initLayout(attrs: AttributeSet?) {
+        val params = generateLayoutParams(attrs)
 
-        mRelativeDepth = a.getFloat(
-            R.styleable.ReflectionViewContainer_reflect_relativeDepth,
-            mRelativeDepth
-        ).coerceAtMost(1.0f)
+        mRelativeDepth = params.relativeDepth
 
-        mReflectionGap = a.getDimension(
-            R.styleable.ReflectionViewContainer_reflect_gap,
-            mReflectionGap
-        )
-        a.recycle()
+        mReflectionGap = params.gap
 
         // Setting the orientation of linear layout as vertical as reflection view should be
         // just below the main view
@@ -159,8 +147,8 @@ class ReflectionViewContainer : LinearLayout {
 
 
     class LayoutParams : LinearLayout.LayoutParams {
-        private var relativeDepth = DEFAULT_RELATIVE_DEPTH
-        private var gap = DEFAULT_GAP
+        var relativeDepth = DEFAULT_RELATIVE_DEPTH
+        var gap = DEFAULT_GAP
 
         constructor(c: Context, attrs: AttributeSet?) : super(c, attrs) {
             val a = c.obtainStyledAttributes(attrs, R.styleable.ReflectionViewContainer_Layout)
@@ -181,7 +169,7 @@ class ReflectionViewContainer : LinearLayout {
         constructor(source: ViewGroup.LayoutParams) : super(source)
     }
 
-    internal class Reflect @JvmOverloads constructor(
+    class Reflect @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     ) : View(context, attrs, defStyleAttr) {
 
