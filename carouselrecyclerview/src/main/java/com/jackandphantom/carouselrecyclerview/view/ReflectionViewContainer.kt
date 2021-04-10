@@ -27,8 +27,13 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowMetrics
 import android.widget.LinearLayout
 import com.jackandphantom.carouselrecyclerview.R
+import android.util.DisplayMetrics
+
+
+
 
 /**
  * This is an extension of LinearLayout to have reflection of child view in it.
@@ -46,7 +51,7 @@ class ReflectionViewContainer : LinearLayout {
 
         // Gap b/w the view and the reflection formed
         // Same effect can be achieved with padding but the distance will be twice
-        private const val DEFAULT_GAP = 4.0f
+        private const val DEFAULT_GAP = 0.0f
     }
 
     private lateinit var mReflect: Reflect
@@ -61,11 +66,11 @@ class ReflectionViewContainer : LinearLayout {
             alpha = 0.85f
         }
         addView(mReflect)
-        initLayout(null)
+        initFlowLayout(null, R.attr.reflect_reflectionLayoutStyle)
     }
 
     constructor(context: Context) : super(context, null, R.attr.reflect_reflectionLayoutStyle) {
-        initLayout(null)
+        initFlowLayout(null, R.attr.reflect_reflectionLayoutStyle)
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(
@@ -73,7 +78,7 @@ class ReflectionViewContainer : LinearLayout {
         attrs,
         R.attr.reflect_reflectionLayoutStyle
     ) {
-        initLayout(attrs)
+        initFlowLayout(attrs, R.attr.reflect_reflectionLayoutStyle)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -81,7 +86,7 @@ class ReflectionViewContainer : LinearLayout {
         attrs,
         defStyleAttr
     ) {
-        initLayout(attrs)
+        initFlowLayout(attrs, defStyleAttr)
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -96,15 +101,27 @@ class ReflectionViewContainer : LinearLayout {
         defStyleAttr,
         defStyleRes
     ) {
-        initLayout(attrs)
+        initFlowLayout(attrs, defStyleAttr)
     }
 
-    private fun initLayout(attrs: AttributeSet?) {
-        val params = generateLayoutParams(attrs)
+    private fun initFlowLayout(attrs: AttributeSet?, defStyleAttr: Int) {
+        val a = context.obtainStyledAttributes(
+            attrs,
+            R.styleable.ReflectionViewContainer,
+            defStyleAttr,
+            0
+        )
 
-        mRelativeDepth = params.relativeDepth
+        mRelativeDepth = a.getFloat(
+            R.styleable.ReflectionViewContainer_reflect_relativeDepth,
+            mRelativeDepth
+        ).coerceAtMost(1.0f)
 
-        mReflectionGap = params.gap
+        mReflectionGap = a.getDimension(
+            R.styleable.ReflectionViewContainer_reflect_gap,
+            mReflectionGap
+        )
+        a.recycle()
 
         // Setting the orientation of linear layout as vertical as reflection view should be
         // just below the main view
@@ -127,7 +144,6 @@ class ReflectionViewContainer : LinearLayout {
 
     @SuppressLint("DrawAllocation")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        getChildAt(0)?.measure(widthMeasureSpec, heightMeasureSpec)
         mReflect.copyMeasuredDimension()
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
@@ -147,8 +163,8 @@ class ReflectionViewContainer : LinearLayout {
 
 
     class LayoutParams : LinearLayout.LayoutParams {
-        var relativeDepth = DEFAULT_RELATIVE_DEPTH
-        var gap = DEFAULT_GAP
+        private var relativeDepth = DEFAULT_RELATIVE_DEPTH
+        private var gap = DEFAULT_GAP
 
         constructor(c: Context, attrs: AttributeSet?) : super(c, attrs) {
             val a = c.obtainStyledAttributes(attrs, R.styleable.ReflectionViewContainer_Layout)
@@ -169,7 +185,7 @@ class ReflectionViewContainer : LinearLayout {
         constructor(source: ViewGroup.LayoutParams) : super(source)
     }
 
-    class Reflect @JvmOverloads constructor(
+    internal class Reflect @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     ) : View(context, attrs, defStyleAttr) {
 
@@ -200,12 +216,34 @@ class ReflectionViewContainer : LinearLayout {
         }
 
         fun copyMeasuredDimension() {
-            /** [ MATCHING REFLECTION VIEW DIMENSIONS WITH THE MAIN VIEW ] */
 
             val p = layoutParams
             val q = toReflect.layoutParams
-            p.width = q.width.coerceAtLeast(toReflect.measuredWidth)
-            p.height = (mRelDepth * q.height.coerceAtLeast(toReflect.measuredHeight) + mGap + toReflect.paddingBottom).toInt()
+            /** [ MATCHING REFLECTION VIEW DIMENSIONS WITH THE MAIN VIEW ] */
+            toReflect.measure(MeasureSpec.makeMeasureSpec(resources.displayMetrics.widthPixels, MeasureSpec.AT_MOST),
+                MeasureSpec.makeMeasureSpec(resources.displayMetrics.heightPixels, MeasureSpec.AT_MOST))
+            val msWidth = toReflect.measuredWidth
+            val msHeight = toReflect.measuredHeight
+
+            when {
+                q.width >= 0 -> {
+                    p.width = q.width
+                }
+                else -> {
+                    p.width = msWidth
+                }
+            }
+
+            when {
+                q.height >= 0 -> {
+                    p.height = (mRelDepth * q.height + mGap + toReflect.paddingBottom).toInt()
+                }
+                else -> {
+                    p.height =  (mRelDepth *  msHeight).toInt()
+                }
+            }
+
+            this.setMeasuredDimension(toReflect.measuredWidth, (mRelDepth *  toReflect.measuredHeight).toInt())
             layoutParams = p
 
             /** END */
