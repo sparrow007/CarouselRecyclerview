@@ -27,12 +27,8 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowMetrics
 import android.widget.LinearLayout
 import com.jackandphantom.carouselrecyclerview.R
-import android.util.DisplayMetrics
-
-
 
 
 /**
@@ -66,11 +62,11 @@ class ReflectionViewContainer : LinearLayout {
             alpha = 0.85f
         }
         addView(mReflect)
-        initFlowLayout(null, R.attr.reflect_reflectionLayoutStyle)
+        initLayout(null, R.attr.reflect_reflectionLayoutStyle)
     }
 
     constructor(context: Context) : super(context, null, R.attr.reflect_reflectionLayoutStyle) {
-        initFlowLayout(null, R.attr.reflect_reflectionLayoutStyle)
+        initLayout(null, R.attr.reflect_reflectionLayoutStyle)
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(
@@ -78,7 +74,7 @@ class ReflectionViewContainer : LinearLayout {
         attrs,
         R.attr.reflect_reflectionLayoutStyle
     ) {
-        initFlowLayout(attrs, R.attr.reflect_reflectionLayoutStyle)
+        initLayout(attrs, R.attr.reflect_reflectionLayoutStyle)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -86,7 +82,7 @@ class ReflectionViewContainer : LinearLayout {
         attrs,
         defStyleAttr
     ) {
-        initFlowLayout(attrs, defStyleAttr)
+        initLayout(attrs, defStyleAttr)
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -101,10 +97,10 @@ class ReflectionViewContainer : LinearLayout {
         defStyleAttr,
         defStyleRes
     ) {
-        initFlowLayout(attrs, defStyleAttr)
+        initLayout(attrs, defStyleAttr)
     }
 
-    private fun initFlowLayout(attrs: AttributeSet?, defStyleAttr: Int) {
+    private fun initLayout(attrs: AttributeSet?, defStyleAttr: Int) {
         val a = context.obtainStyledAttributes(
             attrs,
             R.styleable.ReflectionViewContainer,
@@ -264,6 +260,7 @@ class ReflectionViewContainer : LinearLayout {
                 val mTranslateY = toReflect.height - height + gap
 
                 canvas.translate(0f, -mTranslateY)
+                canvas.clipRect(left, top, width, height)
                 toReflect.draw(canvas)
                 canvas.restore()
                 canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(),  mPaint)
