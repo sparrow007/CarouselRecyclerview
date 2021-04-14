@@ -3,6 +3,7 @@ package com.jackandphantom.carousellayout.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.customviewimple.model.DataModel
@@ -12,7 +13,7 @@ import com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
 class DataAdapter (private var list : List<DataModel>): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
      class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-         val image : ReflectionImageView = itemView.findViewById(R.id.image)
+         val image : ImageView = itemView.findViewById(R.id.image)
      }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
