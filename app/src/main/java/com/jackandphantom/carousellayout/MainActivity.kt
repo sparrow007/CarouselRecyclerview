@@ -2,32 +2,37 @@ package com.jackandphantom.carousellayout
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.customviewimple.model.DataModel
+import com.jackandphantom.carousellayout.model.DataModel
 import com.jackandphantom.carousellayout.adapter.DataAdapter
 import com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
 
 class MainActivity : AppCompatActivity() {
+    val list = ArrayList<DataModel>()
+    var carouselRecyclerview:CarouselRecyclerview?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        carouselRecyclerview = findViewById<CarouselRecyclerview>(R.id.recycler)
+        createItems()
+        setRecyclerView()
+    }
 
-        val carouselRecyclerview = findViewById<CarouselRecyclerview>(R.id.recycler)
+    private fun createItems(){
+        with(list){
+            add(DataModel(R.drawable.hacker))
+            add(DataModel(R.drawable.hobes))
+            add(DataModel(R.drawable.guypro))
+            add(DataModel(R.drawable.joker))
+            add(DataModel(R.drawable.londonlove))
+        }
+    }
 
-        val list = ArrayList<DataModel>()
-        list.add(DataModel(R.drawable.hacker, "Thi is cool"))
-        list.add(DataModel(R.drawable.hobes, "Thi is cool"))
-        list.add(DataModel(R.drawable.guypro, "Thi is cool"))
-        list.add(DataModel(R.drawable.joker, "Thi is cool"))
-        list.add(DataModel(R.drawable.londonlove, "Thi is cool"))
-
+    private fun setRecyclerView(){
         val adapter = DataAdapter(list)
-
-        carouselRecyclerview.adapter = adapter
-        carouselRecyclerview.set3DItem(true)
-        carouselRecyclerview.setAlpha(true)
-        val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
-        val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
-
-
+        carouselRecyclerview?.let{
+            it.adapter = adapter
+            it.set3DItem(true)
+            it.setAlpha(true)
+        }
     }
 }

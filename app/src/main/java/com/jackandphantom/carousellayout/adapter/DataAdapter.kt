@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.customviewimple.model.DataModel
+import com.jackandphantom.carousellayout.model.DataModel
 import com.jackandphantom.carousellayout.R
-import com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
 
 class DataAdapter (private var list : List<DataModel>): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
