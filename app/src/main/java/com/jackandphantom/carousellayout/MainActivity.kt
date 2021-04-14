@@ -2,17 +2,20 @@ package com.jackandphantom.carousellayout
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.jackandphantom.carousellayout.model.DataModel
 import com.jackandphantom.carousellayout.adapter.DataAdapter
+import com.jackandphantom.carousellayout.databinding.ActivityMainBinding
 import com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
 
 class MainActivity : AppCompatActivity() {
-    val list = ArrayList<DataModel>()
-    var carouselRecyclerview:CarouselRecyclerview?=null
+    private val list = ArrayList<DataModel>()
+    private val binding: ActivityMainBinding by lazy {
+        DataBindingUtil.setContentView(this,R.layout.activity_main)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        carouselRecyclerview = findViewById<CarouselRecyclerview>(R.id.recycler)
         createItems()
         setRecyclerView()
     }
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setRecyclerView(){
         val adapter = DataAdapter(list)
-        carouselRecyclerview?.let{
+        binding.carouselRecyclerview.let{
             it.adapter = adapter
             it.set3DItem(true)
             it.setAlpha(true)
