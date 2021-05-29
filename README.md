@@ -19,7 +19,7 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
-[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.0)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.1.0/aar/)
+[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.1)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.1/aar/)
 [![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
 
 ### Gradle 
@@ -147,7 +147,7 @@ I would recommend you to use image loading library like Glide for loading image 
 
 <BR>
   
-### What's New Version 1.2.0 🎉🎉  
+### What's New Version 1.2.1 🎉🎉  
 Bugs Fix (ScrollToPosition)
 
 ### Version 1.2.0
