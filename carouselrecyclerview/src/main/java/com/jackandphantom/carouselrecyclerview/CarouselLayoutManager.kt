@@ -400,6 +400,12 @@ class CarouselLayoutManager constructor(
      */
     override fun scrollToPosition(position: Int) {
         if (position < 0 || position > itemCount - 1) return
+        if (!this::recycler.isInitialized || !this::state.isInitialized) {
+            isOrientationChange = true
+            selectedPosition = position
+            requestLayout()
+            return
+        }
         mOffsetAll = calculatePositionOffset(position)
         layoutItems(recycler,
             state,
@@ -422,7 +428,7 @@ class CarouselLayoutManager constructor(
         position: Int
     ) {
         //Loop does not support for smooth scrolling
-        if (mInfinite) return
+        if (mInfinite||!this::recycler.isInitialized || !this::state.isInitialized) return
         val finalOffset = calculatePositionOffset(position)
         startScroll(mOffsetAll, finalOffset)
     }

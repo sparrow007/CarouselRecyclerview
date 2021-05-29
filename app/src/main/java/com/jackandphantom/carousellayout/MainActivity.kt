@@ -1,6 +1,7 @@
 package com.jackandphantom.carousellayout
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.customviewimple.model.DataModel
 import com.jackandphantom.carousellayout.adapter.DataAdapter
@@ -25,8 +26,11 @@ class MainActivity : AppCompatActivity() {
         carouselRecyclerview.adapter = adapter
         carouselRecyclerview.set3DItem(true)
         carouselRecyclerview.setAlpha(true)
+
         val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
         val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
+
+        carouselLayoutManager.scrollToPosition(4)
 
 
     }
