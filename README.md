@@ -19,7 +19,7 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
-[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.1.0)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.1.0/aar/)
+[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.0)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.1.0/aar/)
 [![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
 
 ### Gradle 
@@ -34,7 +34,7 @@ allprojects {
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-   implementation 'com.github.sparrow007:carouselrecyclerview:1.1.0'
+   implementation 'com.github.sparrow007:carouselrecyclerview:1.2.0'
 }
 ```
 
@@ -98,7 +98,7 @@ Method | Description | Default
   ```
 
 ## Reflection ImageView
-<img src="./preview/reflectionImageVIew.jpg" align="right" width="32%"/>
+<img src="./preview/reflectionImageVIew.jpg" align="right" width="22%"/>
 You see in the demo that there is a mirror image (reflection imageview), for this i already created custom imageview for this.
 
 
@@ -113,12 +113,44 @@ Use ReflectionImageView in xml layout and provide src
     />
 ```
 
+<Br>
+
+## Reflection Layout
+
+<img src= "https://user-images.githubusercontent.com/7668602/114284225-14244980-9a6c-11eb-8e49-aa7b191a6d1d.png" align="right" width="22%"/>
+
+Now you can show reflection in more efficient way and 3x faster than ReflectionImageView see the codes below
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<com.jackandphantom.carouselrecyclerview.view.ReflectionViewContainer
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:reflect_relativeDepth="0.5"
+    app:reflect_gap="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/guypro"
+        android:scaleType="fitXY"
+        android:id="@+id/image" />
+</com.jackandphantom.carouselrecyclerview.view.ReflectionViewContainer>
+
+```
+<Br>
+  
 ### Notes about Reflection imageview
 I would recommend you to use image loading library like Glide for loading image in reflection image for better performance
 
+<BR>
 
+### What's New Version 1.2.0 🎉🎉
+Adding reflection container
 
-### What's New Version 1.1.0 🎉🎉
+### Version 1.1.0 
 Adding Support for orientation changes
 
 ## Contribute 🤝
