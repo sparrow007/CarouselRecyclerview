@@ -10,6 +10,7 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
   <a href="http://developer.android.com/index.html"><img alt="License" src="https://img.shields.io/badge/platform-android-green.svg"/></a>
     <a href="https://android-arsenal.com/api?level=16"><img alt="License" src="https://img.shields.io/badge/API-16%2B-brightgreen.svg"/></a>
     <a href="https://mailchi.mp/kotlinweekly/kotlin-weekly-242"><img alt="AndroidWeekly" src="https://skydoves.github.io/badges/kotlin-weekly.svg"/></a>
+    <a href="https://androidweekly.net/issues/issue-468"><image src="https://androidweekly.net/issues/issue-468/badge"/></a>
 
 </p>
 </br>
