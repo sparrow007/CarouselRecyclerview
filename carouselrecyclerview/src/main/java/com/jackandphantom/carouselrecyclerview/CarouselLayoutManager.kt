@@ -439,9 +439,12 @@ class CarouselLayoutManager constructor(
      * @return Int center position
      */
     fun centerPosition(): Int {
-        var pos = mOffsetAll / getIntervalDistance()
-        val more = mOffsetAll % getIntervalDistance()
-        if (abs(more) >= getIntervalDistance() * 0.5f) {
+        val intervalPosition = getIntervalDistance()
+        if (intervalPosition == 0) return intervalPosition
+
+        var pos = mOffsetAll / intervalPosition
+        val more = mOffsetAll % intervalPosition
+        if (abs(more) >= intervalPosition * 0.5f) {
             if (more >= 0) pos++
             else pos--
         }
