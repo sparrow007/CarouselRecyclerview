@@ -60,7 +60,7 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
      * @param isAlpha alpha value and it should in range (0.3f - 1.0f)
      */
     fun setAlpha(isAlpha: Boolean) {
-        carouselLayoutManagerBuilder.setIsAlpha(true)
+        carouselLayoutManagerBuilder.setIsAlpha(isAlpha)
         layoutManager = carouselLayoutManagerBuilder.build()
     }
 
