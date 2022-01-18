@@ -20,7 +20,7 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
-[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.1)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.1/aar/)
+[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.2)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.2/aar/)
 [![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
 
 ### Gradle 
@@ -35,7 +35,7 @@ allprojects {
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-   implementation 'com.github.sparrow007:carouselrecyclerview:1.2.1'
+   implementation 'com.github.sparrow007:carouselrecyclerview:1.2.2'
 }
 ```
 
@@ -72,7 +72,8 @@ Method | Description | Default
   fun setAlpha(isAlpha: Boolean) | Set the alpha for each item depends on the position in the layout manager | false
   fun setIntervalRatio(ratio: Float) | Set the interval ratio which is gap between items (views) in layout manager | 0.5f (value of gap, it should in range (0.4f - 1f))
   fun getCarouselLayoutManager(): CarouselLayoutManager | Get the carousel layout manager instance | 
-  fun getSelectedPosition(): Int | Get selected position from the layout manager | center view Positoin
+  fun getSelectedPosition(): Int | Get selected position from the layout manager | center view Position
+  fun setIsScrollingEnabled(isScrollingEnabled: Boolean) | Set scrolling disabled or enabled | true
 
   ## API Methods Usage
   ```Kotlin
@@ -145,10 +146,14 @@ Now you can show reflection in more efficient way and 3x faster than ReflectionI
   
 ### Notes about Reflection imageview
 I would recommend you to use image loading library like Glide for loading image in reflection image for better performance
-
 <BR>
+
+### What's New Version 1.2.2 🎉🎉  
+Bugs Fix (Empty List swipe)<br>
+Add setIsScrollingEnabled <br>
+Remove hardcoded alpha value  <br>
   
-### What's New Version 1.2.1 🎉🎉  
+### What's New Version 1.2.1  
 Bugs Fix (ScrollToPosition)
 
 ### Version 1.2.0
