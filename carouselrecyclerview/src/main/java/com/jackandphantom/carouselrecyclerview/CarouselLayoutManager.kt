@@ -75,6 +75,9 @@ class CarouselLayoutManager constructor(
     /** Use for restore scrolling in recyclerview at the time of orientation change*/
     private var isOrientationChange = false
 
+    /** set to enable/disable scrolling in recyclerview */
+    private var isScrollingEnabled = true
+
     /** Initialize all the attribute from the constructor and also apply some conditions */
     init {
         this.mInfinite = isLoop
@@ -172,7 +175,8 @@ class CarouselLayoutManager constructor(
      * @return return boolean value to tell recyclerview for scroll handling with horizontal direction
      * */
     override fun canScrollHorizontally(): Boolean {
-        return true
+
+        return isScrollingEnabled
     }
 
     /**
@@ -635,6 +639,13 @@ class CarouselLayoutManager constructor(
      */
     fun setOnSelectedListener(l: OnSelected) {
         this.mSelectedListener = l
+    }
+
+    /**
+     * set isScrollingEnabled value
+     */
+    fun setIsScrollingEnabled(isScrollingEnabled: Boolean) {
+        this.isScrollingEnabled = isScrollingEnabled
     }
 
     /**
