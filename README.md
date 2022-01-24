@@ -163,7 +163,24 @@ Adding reflection container
 Adding Support for orientation changes
 
 ## Contribute 🤝
-If you like the project and somehow wants to contribute, you are welcome to contribute by either submitting issues, refactor, pull request Thankyou.
+If you like the project and somehow wants to contribute, you are welcome to contribute by either submitting issues, refactor, pull request Thankyou.  
+  
+## Contributors ✨
+
+Thanks go to these wonderful people :  
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+  <td align="center"><a href="https://github.com/snehilrx"><img src="https://avatars.githubusercontent.com/u/7668602?v=4" width="100px;" alt=""/><br /><sub><b>Snehil</b></sub></a><br /><a href="#Contributor-Snehil" title="Contributor">💻</a></td>
+      <td align="center"><a href="https://github.com/mattiasrosberg"><img src="https://avatars.githubusercontent.com/u/261872?v=4" width="100px;" alt=""/><br /><sub><b>Mattias Rosberg
+</b></sub></a><br /><a href="#Contributor-Mattias" title="Contributor">💻</a></td>
+          <td align="center"><a href="https://github.com/akashmi"><img src="https://avatars.githubusercontent.com/u/11882168?v=4" width="100px;" alt=""/><br /><sub><b>AKASH PATEL</b></sub></a><br /><a href="#Contributor-AKASH" title="Contributor">💻</a></td>
+  </tr>
+  </table>  
+ 
 
 ## Find this repository useful? ❤️
 Support it by joining __[stargazers](https://github.com/sparrow007/CarouselRecyclerview/stargazers)__ for this repository. :star: <br>
