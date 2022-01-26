@@ -4,10 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 
-class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : RecyclerView(context, attributeSet) {
+class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) :
+    RecyclerView(context, attributeSet) {
 
     /** Create layout manager builder so that we can easily add more methods to it */
     private var carouselLayoutManagerBuilder: CarouselLayoutManager.Builder =
@@ -20,25 +20,23 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
         private const val SAVE_LAYOUT_MANAGER = "layout-manager-state"
     }
 
-    /**
-     * Initialize the layout manager and also enable the childDrawingOrder
-     */
+    /** Initialize the layout manager and also enable the childDrawingOrder */
     init {
         layoutManager = carouselLayoutManagerBuilder.build()
         isChildrenDrawingOrderEnabled = true
     }
 
     /**
-     * set the 3d item to the layout manager
+     * Set the 3d item to the layout manager
      * @param is3DItem make items in layout manager tilt if true
-     * */
+     */
     fun set3DItem(is3DItem: Boolean) {
         carouselLayoutManagerBuilder.set3DItem(is3DItem)
         layoutManager = carouselLayoutManagerBuilder.build()
     }
 
     /**
-     * set the infinite items in the layout manager
+     * Set the infinite items in the layout manager
      * @param isInfinite make loop of items
      * */
     fun setInfinite(isInfinite: Boolean) {
@@ -77,7 +75,7 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
      * Get the layout manager instance
      * @return CoverLayout
      */
-     fun getCarouselLayoutManager(): CarouselLayoutManager {
+    fun getCarouselLayoutManager(): CarouselLayoutManager {
         return layoutManager as CarouselLayoutManager
     }
 
@@ -91,24 +89,21 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
     override fun getChildDrawingOrder(childCount: Int, i: Int): Int {
         val center: Int = getCarouselLayoutManager().centerPosition()
 
-        // Get the actual position of the i-th child view in RecyclerView
-
-        // Get the actual position of the i-th child view in RecyclerView
+        /** Get the actual position of the i-th child view in RecyclerView */
         val actualPos: Int = getCarouselLayoutManager().getChildActualPos(i)
 
-        // The number of intervals from the middle item
-
-        // The number of intervals from the middle item
+        /** The number of intervals from the middle item */
         val dist = actualPos - center
 
         var order: Int
-        // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
-        // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
+        /** [< 0] Indicates that the item is located to the left of the middle item and can be drawn in order */
         order = if (dist < 0) {
             i
         } else {
-            //[>= 0] It means that the item is located to the right
-            // of the middle item, and the order needs to be reversed.
+            /**
+             * [>= 0] It means that the item is located to the right
+             * of the middle item, and the order needs to be reversed.
+             */
             childCount - 1 - dist
         }
 
@@ -134,7 +129,7 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
             layoutManagerState = state.getParcelable(SAVE_LAYOUT_MANAGER)
             super.onRestoreInstanceState(state.getParcelable(SAVE_SUPER_STATE))
 
-        }else super.onRestoreInstanceState(state)
+        } else super.onRestoreInstanceState(state)
 
     }
 
@@ -145,7 +140,7 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
     fun getSelectedPosition() = getCarouselLayoutManager().getSelectedPosition()
 
     private fun restorePosition() {
-        if(layoutManagerState != null) {
+        if (layoutManagerState != null) {
             getCarouselLayoutManager().onRestoreInstanceState(layoutManagerState)
             layoutManagerState = null
         }

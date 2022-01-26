@@ -7,7 +7,8 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 
-class ReflectionImageView(context: Context, attrs: AttributeSet): AppCompatImageView(context, attrs) {
+class ReflectionImageView(context: Context, attrs: AttributeSet) :
+    AppCompatImageView(context, attrs) {
 
     override fun setImageDrawable(drawable: Drawable?) {
         if (drawable == null) return
@@ -18,10 +19,10 @@ class ReflectionImageView(context: Context, attrs: AttributeSet): AppCompatImage
             }
         }
 
-        var bitmap:Bitmap? = null
-        bitmap = if (drawable.intrinsicWidth <= 0|| drawable.intrinsicHeight <= 0) {
+        var bitmap: Bitmap? = null
+        bitmap = if (drawable.intrinsicWidth <= 0 || drawable.intrinsicHeight <= 0) {
             Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
-        }else {
+        } else {
             Bitmap.createBitmap(
                 drawable.intrinsicWidth,
                 drawable.intrinsicHeight,

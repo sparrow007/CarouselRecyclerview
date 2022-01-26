@@ -42,11 +42,15 @@ import com.jackandphantom.carouselrecyclerview.R
 class ReflectionViewContainer : LinearLayout {
 
     companion object {
-        // Relative height of the view to generate reflection aka Reflection Depth/Length
+        /**
+         * Relative height of the view to generate reflection aka Reflection Depth/Length
+         **/
         private const val DEFAULT_RELATIVE_DEPTH = 0.5f
 
-        // Gap b/w the view and the reflection formed
-        // Same effect can be achieved with padding but the distance will be twice
+        /**
+         * Gap b/w the view and the reflection formed
+         * Same effect can be achieved with padding but the distance will be twice
+         **/
         private const val DEFAULT_GAP = 0.0f
     }
 
@@ -54,8 +58,14 @@ class ReflectionViewContainer : LinearLayout {
     private var mRelativeDepth: Float = DEFAULT_RELATIVE_DEPTH
     private var mReflectionGap: Float = DEFAULT_GAP
 
-    // constructor for programmatically adding view
-    constructor(context: Context, view: View) : super(context, null, R.attr.reflect_reflectionLayoutStyle) {
+    /**
+     * constructor for programmatically adding view
+     **/
+    constructor(context: Context, view: View) : super(
+        context,
+        null,
+        R.attr.reflect_reflectionLayoutStyle
+    ) {
         addView(view)
         mReflect = Reflect(this.context).apply {
             setupView(view, mReflectionGap, mRelativeDepth)
@@ -119,15 +129,19 @@ class ReflectionViewContainer : LinearLayout {
         )
         a.recycle()
 
-        // Setting the orientation of linear layout as vertical as reflection view should be
-        // just below the main view
+        /**
+         * Setting the orientation of linear layout as vertical as reflection view should be
+         * just below the main view
+         **/
         orientation = VERTICAL
     }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        // this guaranties that the reflection is displayed below the main view
-        // because this method trigger after the layout inflation is done
+        /**
+         * This guaranties that the reflection is displayed below the main view
+         * because this method trigger after the layout inflation is done
+         */
         this.getChildAt(0)?.let {
             mReflect = Reflect(this.context).apply {
                 setupView(it, mReflectionGap, mRelativeDepth)
@@ -204,7 +218,7 @@ class ReflectionViewContainer : LinearLayout {
             // I didn't find any way around this draw allocation as it required the size of the view
             mShader = LinearGradient(
                 0f,
-                height/2f, 0f, height.toFloat(),  0x7FFFFFFF, 0x00000000,
+                height / 2f, 0f, height.toFloat(), 0x7FFFFFFF, 0x00000000,
                 Shader.TileMode.CLAMP
             )
             mPaint.shader = mShader
@@ -216,8 +230,16 @@ class ReflectionViewContainer : LinearLayout {
             val p = layoutParams
             val q = toReflect.layoutParams
             /** [ MATCHING REFLECTION VIEW DIMENSIONS WITH THE MAIN VIEW ] */
-            toReflect.measure(MeasureSpec.makeMeasureSpec(resources.displayMetrics.widthPixels, MeasureSpec.AT_MOST),
-                MeasureSpec.makeMeasureSpec(resources.displayMetrics.heightPixels, MeasureSpec.AT_MOST))
+            toReflect.measure(
+                MeasureSpec.makeMeasureSpec(
+                    resources.displayMetrics.widthPixels,
+                    MeasureSpec.AT_MOST
+                ),
+                MeasureSpec.makeMeasureSpec(
+                    resources.displayMetrics.heightPixels,
+                    MeasureSpec.AT_MOST
+                )
+            )
             val msWidth = toReflect.measuredWidth
             val msHeight = toReflect.measuredHeight
 
@@ -235,11 +257,14 @@ class ReflectionViewContainer : LinearLayout {
                     p.height = (mRelDepth * q.height + mGap + toReflect.paddingBottom).toInt()
                 }
                 else -> {
-                    p.height =  (mRelDepth *  msHeight).toInt()
+                    p.height = (mRelDepth * msHeight).toInt()
                 }
             }
 
-            this.setMeasuredDimension(toReflect.measuredWidth, (mRelDepth *  toReflect.measuredHeight).toInt())
+            this.setMeasuredDimension(
+                toReflect.measuredWidth,
+                (mRelDepth * toReflect.measuredHeight).toInt()
+            )
             layoutParams = p
 
             /** END */
@@ -252,18 +277,18 @@ class ReflectionViewContainer : LinearLayout {
                 canvas.save()
                 val cx = width / 2f
                 val cy = height / 2f
-                // rotating, flipping and translating the canvas to create the required mirror image.
+                /** Rotating, flipping and translating the canvas to create the required mirror image.*/
                 canvas.rotate(-180f, cx, cy)
                 canvas.scale(-1f, 1f, cx, cy)
 
-                val gap =  height - mRelDepth * toReflect.height
+                val gap = height - mRelDepth * toReflect.height
                 val mTranslateY = toReflect.height - height + gap
 
                 canvas.translate(0f, -mTranslateY)
                 canvas.clipRect(left, top, width, height)
                 toReflect.draw(canvas)
                 canvas.restore()
-                canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(),  mPaint)
+                canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), mPaint)
             }
         }
     }
