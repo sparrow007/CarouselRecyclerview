@@ -660,7 +660,7 @@ class CarouselLayoutManager constructor(
         private var intervalRation: Float = 0.5f
         private var isFlat = false
         private var isAlpha = false
-        private var isScrollingEnabled = false
+        private var isScrollingEnabled = true
 
         fun setIsInfinite(isInfinite: Boolean) : Builder {
             this.isInfinite = isInfinite
