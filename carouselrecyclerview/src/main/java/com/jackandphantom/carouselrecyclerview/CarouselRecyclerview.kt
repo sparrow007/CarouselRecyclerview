@@ -74,6 +74,15 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
     }
 
     /**
+     * Set Scrolling in layout manager, It helps to remove/add scrolling in the recyclerview
+     * @param isScrollingEnabled set scrollingEnabled value
+     */
+    fun setIsScrollingEnabled(isScrollingEnabled: Boolean) {
+        carouselLayoutManagerBuilder.setIsScrollingEnabled(isScrollingEnabled)
+        layoutManager = carouselLayoutManagerBuilder.build()
+    }
+
+    /**
      * Get the layout manager instance
      * @return CoverLayout
      */
