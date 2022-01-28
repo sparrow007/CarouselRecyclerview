@@ -15,9 +15,8 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 class CarouselLayoutManager constructor(
-    isLoop: Boolean, isItem3D: Boolean, ratio: Float, flat: Boolean, alpha: Boolean
-) : RecyclerView.LayoutManager() {
-
+    isLoop: Boolean, isItem3D: Boolean, ratio: Float, flat: Boolean, alpha: Boolean, isScrollingEnabled: Boolean)
+    : RecyclerView.LayoutManager() {
     /**
      * We are supposing that all the items in recyclerview will have same size
      * Decorated child view width
@@ -83,6 +82,7 @@ class CarouselLayoutManager constructor(
         this.mInfinite = isLoop
         this.is3DItem = isItem3D
         this.isAlpha = alpha
+        this.isScrollingEnabled = isScrollingEnabled
         if (ratio in 0f..1f) this.intervalRatio = ratio
         isFlat = flat
         if (isFlat) intervalRatio = 1.1f
@@ -655,13 +655,6 @@ class CarouselLayoutManager constructor(
     }
 
     /**
-     * Set isScrollingEnabled value
-     */
-    fun setIsScrollingEnabled(isScrollingEnabled: Boolean) {
-        this.isScrollingEnabled = isScrollingEnabled
-    }
-
-    /**
      * Get the selected position or centered position
      * @return selectedPosition
      */
@@ -676,6 +669,7 @@ class CarouselLayoutManager constructor(
         private var intervalRation: Float = 0.5f
         private var isFlat = false
         private var isAlpha = false
+        private var isScrollingEnabled = true
 
         fun setIsInfinite(isInfinite: Boolean): Builder {
             this.isInfinite = isInfinite
@@ -702,8 +696,13 @@ class CarouselLayoutManager constructor(
             return this
         }
 
+        fun setIsScrollingEnabled(isScrollingEnabled: Boolean): Builder {
+            this.isScrollingEnabled = isScrollingEnabled
+            return this
+        }
+
         fun build(): CarouselLayoutManager {
-            return CarouselLayoutManager(isInfinite, is3DItem, intervalRation, isFlat, isAlpha)
+            return CarouselLayoutManager(isInfinite, is3DItem, intervalRation, isFlat, isAlpha, isScrollingEnabled)
         }
     }
 
