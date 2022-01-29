@@ -155,7 +155,6 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
 
     private fun restorePosition() {
         if(layoutManagerState != null) {
-
             getCarouselLayoutManager().onRestoreInstanceState(layoutManagerState)
             layoutManagerState = null
         }
