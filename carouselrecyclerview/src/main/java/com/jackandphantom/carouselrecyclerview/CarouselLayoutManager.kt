@@ -553,7 +553,7 @@ class CarouselLayoutManager constructor(
         val intervalDistance = getIntervalDistance()
         if (intervalDistance == 0) return
 
-        selectedPosition = ((mOffsetAll / getIntervalDistance()).toFloat()).roundToInt()
+        selectedPosition = ((mOffsetAll / intervalDistance).toFloat()).roundToInt()
         if (selectedPosition < 0) selectedPosition += itemCount
         selectedPosition = abs(selectedPosition % itemCount)
         //check if the listener is implemented
