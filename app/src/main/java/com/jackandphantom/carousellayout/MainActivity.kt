@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         carouselRecyclerview.set3DItem(true)
         carouselRecyclerview.setAlpha(true)
         carouselRecyclerview.setInfinite(true)
-        carouselRecyclerview.setIsScrollingEnabled(false)
 
         val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
         val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
