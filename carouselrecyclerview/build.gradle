@@ -40,7 +40,7 @@ dependencies {
 
 ext {
     PUBLISH_GROUP_ID = 'com.github.sparrow007'
-    PUBLISH_VERSION = '1.2.2'
+    PUBLISH_VERSION = '1.2.3'
     PUBLISH_ARTIFACT_ID = 'carouselrecyclerview'
 }
 
