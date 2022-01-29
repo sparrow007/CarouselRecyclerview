@@ -382,6 +382,7 @@ class CarouselLayoutManager constructor(
         }
         animator?.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {
+                //do nothing
             }
 
             override fun onAnimationEnd(animation: Animator?) {
@@ -389,9 +390,11 @@ class CarouselLayoutManager constructor(
             }
 
             override fun onAnimationCancel(animation: Animator?) {
+                //do nothing
             }
 
             override fun onAnimationRepeat(animation: Animator?) {
+                //do nothing
             }
 
         })
@@ -546,7 +549,11 @@ class CarouselLayoutManager constructor(
      * calls the interface callback
      */
     private fun onSelectedCallback() {
-        selectedPosition = ((mOffsetAll / getIntervalDistance()).toFloat()).roundToInt()
+        //Some time interval distance is returns 0 that makes [ArithmeticException]
+        val intervalDistance = getIntervalDistance()
+        if (intervalDistance == 0) return
+
+        selectedPosition = ((mOffsetAll / intervalDistance).toFloat()).roundToInt()
         if (selectedPosition < 0) selectedPosition += itemCount
         selectedPosition = abs(selectedPosition % itemCount)
         //check if the listener is implemented

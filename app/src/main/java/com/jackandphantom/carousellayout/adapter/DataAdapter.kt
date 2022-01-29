@@ -10,9 +10,9 @@ import com.example.customviewimple.model.DataModel
 import com.jackandphantom.carousellayout.R
 import com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
 
-class DataAdapter (private var list : List<DataModel>): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+class DataAdapter (private var list : List<DataModel>, private val itemClickListener: OnItemClickListener): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
-     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val image : ImageView = itemView.findViewById(R.id.image)
      }
 
@@ -27,10 +27,17 @@ class DataAdapter (private var list : List<DataModel>): RecyclerView.Adapter<Dat
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Glide.with(holder.image).load(list.get(position).img).into(holder.image)
+        holder.image.setOnClickListener {
+            itemClickListener.onnItemClick(position)
+        }
     }
 
     fun updateData(list: List<DataModel>) {
         this.list = list
         notifyDataSetChanged()
+    }
+
+    interface OnItemClickListener {
+        fun onnItemClick(position: Int)
     }
 }
