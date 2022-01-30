@@ -88,6 +88,8 @@ Method | Description | Default
         carouselRecyclerview.setInfinite(true)
         carouselRecyclerview.setAlpha(true)
         carouselRecyclerview.setFlat(true)
+        carouselRecyclerview.setIsScrollingEnabled(true)
+
         val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
         val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
   
@@ -157,6 +159,7 @@ I would recommend you to use image loading library like Glide for loading image 
 Bugs Fix (Empty List swipe)<br>
 Add setIsScrollingEnabled <br>
 Remove hardcoded alpha value  <br>
+Fix divide by zero arithmetic exception <br>
   
 ### What's New Version 1.2.1  
 Bugs Fix (ScrollToPosition)
