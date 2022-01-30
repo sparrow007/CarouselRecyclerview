@@ -41,7 +41,7 @@ dependencies {
 }
 ```
 
-## Notes
+## Notes❗
 There is some issue going on with maven central jar file for the library, will fix that soon please consider the jitpack for new version thanks.
 
 ## Usage
