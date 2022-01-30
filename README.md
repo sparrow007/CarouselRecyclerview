@@ -46,7 +46,7 @@ There is some issue going on with maven central jar file for the library, will f
 
 ## Usage
 
-### Basic Example for Kotlin
+### Basic Example for Kotlin (Please Use View Binding)
 Here is a basic example of implementing carousel recyclerview in koltin files (activity or fragment) with attribute.
 
 ```kotlin
