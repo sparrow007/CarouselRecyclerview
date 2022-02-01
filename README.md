@@ -194,7 +194,6 @@ Thanks go to these wonderful people :
 Support it by joining __[stargazers](https://github.com/sparrow007/CarouselRecyclerview/stargazers)__ for this repository. :star: <br>
  And __[follow](https://github.com/sparrow007)__  me for next creation 🤩
 
-
 ## License
 ```xml
 Copyright 2021 Sparrow007 (Ankit kumar)
