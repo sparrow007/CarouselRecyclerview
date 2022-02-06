@@ -4,12 +4,17 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.customviewimple.model.DataModel
 import com.jackandphantom.carousellayout.adapter.DataAdapter
+import com.jackandphantom.carousellayout.databinding.ActivityMainBinding
 import com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val carouselRecyclerview = findViewById<CarouselRecyclerview>(R.id.recycler)
 
@@ -28,8 +33,6 @@ class MainActivity : AppCompatActivity() {
         carouselRecyclerview.setInfinite(true)
 
         val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
-        val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
-
         carouselLayoutManager.scrollToPosition(4)
     }
 }
