@@ -28,14 +28,14 @@ Add below codes to your **root** `build.gradle` file (not your module build.grad
 ```Gradle
 allprojects {
     repositories {
-             maven { url "https://jitpack.io" }
+          mavenCentral()
     }
 }
 ```
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-   implementation 'com.github.sparrow007:CarouselRecyclerview:1.2.4'
+   implementation 'com.github.sparrow007:carouselrecyclerview:1.2.4'
 }
 ```
 
