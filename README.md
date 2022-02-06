@@ -41,12 +41,16 @@ dependencies {
 
 ## Usage
 
-### Basic Example for Kotlin (Please Use View Binding)
+### Basic Example for Kotlin
 Here is a basic example of implementing carousel recyclerview in koltin files (activity or fragment) with attribute.
 
 ```kotlin
-  val carouselRecyclerview = findViewById<CarouselRecyclerview>(R.id.recycler)
-  carouselRecyclerview.adapter = adapter
+  binding.carouselRecyclerview.adapter = adapter
+  binding.carouselRecyclerview.apply {
+   set3DItem(true)
+   setAlpha(true)
+   setInfinite(true)
+  }
 ```
 ### Basic Example for XML
 Here is a basic example of implementing carousel recyclerview in layout xml.
@@ -55,7 +59,7 @@ Here is a basic example of implementing carousel recyclerview in layout xml.
 <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:id="@+id/recycler"/>
+     android:id="@+id/carouselRecyclerview"/>
 ```
 
 Property infinite and 3D on Item enabled |Property infinite and alpha on Item enabled |
