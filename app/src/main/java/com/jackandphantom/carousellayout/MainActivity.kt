@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.customviewimple.model.DataModel
 import com.jackandphantom.carousellayout.adapter.DataAdapter
 import com.jackandphantom.carousellayout.databinding.ActivityMainBinding
-import com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,8 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        val carouselRecyclerview = findViewById<CarouselRecyclerview>(R.id.recycler)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
         val list = ArrayList<DataModel>()
         list.add(DataModel(R.drawable.hacker, "Thi is cool"))
@@ -27,12 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = DataAdapter(list)
 
-        carouselRecyclerview.adapter = adapter
-        carouselRecyclerview.set3DItem(true)
-        carouselRecyclerview.setAlpha(true)
-        carouselRecyclerview.setInfinite(true)
-
-        val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
+        binding.recycler.apply {
+            this.adapter = adapter
+            set3DItem(true)
+            setAlpha(true)
+            setInfinite(true)
+        }
+        val carouselLayoutManager = binding.recycler.getCarouselLayoutManager()
         carouselLayoutManager.scrollToPosition(4)
     }
 }
