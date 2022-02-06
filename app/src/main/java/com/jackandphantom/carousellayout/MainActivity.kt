@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val list = ArrayList<DataModel>()
         list.add(DataModel(R.drawable.hacker, "Thi is cool"))
@@ -32,6 +33,6 @@ class MainActivity : AppCompatActivity() {
             setInfinite(true)
         }
         val carouselLayoutManager = binding.recycler.getCarouselLayoutManager()
-        carouselLayoutManager.scrollToPosition(4)
+       // carouselLayoutManager.scrollToPosition(4)
     }
 }
