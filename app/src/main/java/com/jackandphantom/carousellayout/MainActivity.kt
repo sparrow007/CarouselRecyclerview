@@ -4,14 +4,18 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.customviewimple.model.DataModel
 import com.jackandphantom.carousellayout.adapter.DataAdapter
-import com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+import com.jackandphantom.carousellayout.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val carouselRecyclerview = findViewById<CarouselRecyclerview>(R.id.recycler)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val list = ArrayList<DataModel>()
         list.add(DataModel(R.drawable.hacker, "Thi is cool"))
@@ -22,14 +26,13 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = DataAdapter(list)
 
-        carouselRecyclerview.adapter = adapter
-        carouselRecyclerview.set3DItem(true)
-        carouselRecyclerview.setAlpha(true)
-        carouselRecyclerview.setInfinite(true)
-
-        val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
-        val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
-
-        carouselLayoutManager.scrollToPosition(4)
+        binding.recycler.apply {
+            this.adapter = adapter
+            set3DItem(true)
+            setAlpha(true)
+            setInfinite(true)
+        }
+        val carouselLayoutManager = binding.recycler.getCarouselLayoutManager()
+       // carouselLayoutManager.scrollToPosition(4)
     }
 }
