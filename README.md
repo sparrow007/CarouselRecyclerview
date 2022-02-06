@@ -20,7 +20,9 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
-[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.2)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.2/aar/)
+<!--- 
+
+[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.2)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.2/aar/)--->
 [![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
 
 ### Gradle 
@@ -28,20 +30,23 @@ Add below codes to your **root** `build.gradle` file (not your module build.grad
 ```Gradle
 allprojects {
     repositories {
-            mavenCentral()
+             maven { url "https://jitpack.io" }
     }
 }
 ```
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-   implementation 'com.github.sparrow007:carouselrecyclerview:1.2.2'
+   implementation 'com.github.sparrow007:CarouselRecyclerview:1.2.4'
 }
 ```
 
+## Notes❗
+There is some issue going on with maven central jar file for the library, will fix that soon please consider the jitpack for new version thanks.
+
 ## Usage
 
-### Basic Example for Kotlin
+### Basic Example for Kotlin (Please Use View Binding)
 Here is a basic example of implementing carousel recyclerview in koltin files (activity or fragment) with attribute.
 
 ```kotlin
@@ -83,6 +88,8 @@ Method | Description | Default
         carouselRecyclerview.setInfinite(true)
         carouselRecyclerview.setAlpha(true)
         carouselRecyclerview.setFlat(true)
+        carouselRecyclerview.setIsScrollingEnabled(true)
+
         val carouselLayoutManager = carouselRecyclerview.getCarouselLayoutManager()
         val currentlyCenterPosition = carouselRecyclerview.getSelectedPosition()
   
@@ -148,10 +155,11 @@ Now you can show reflection in more efficient way and 3x faster than ReflectionI
 I would recommend you to use image loading library like Glide for loading image in reflection image for better performance
 <BR>
 
-### What's New Version 1.2.2 🎉🎉  
+### What's New Version 1.2.4 🎉🎉  
 Bugs Fix (Empty List swipe)<br>
 Add setIsScrollingEnabled <br>
 Remove hardcoded alpha value  <br>
+Fix divide by zero arithmetic exception <br>
   
 ### What's New Version 1.2.1  
 Bugs Fix (ScrollToPosition)
@@ -185,7 +193,6 @@ Thanks go to these wonderful people :
 ## Find this repository useful? ❤️
 Support it by joining __[stargazers](https://github.com/sparrow007/CarouselRecyclerview/stargazers)__ for this repository. :star: <br>
  And __[follow](https://github.com/sparrow007)__  me for next creation 🤩
-
 
 ## License
 ```xml
