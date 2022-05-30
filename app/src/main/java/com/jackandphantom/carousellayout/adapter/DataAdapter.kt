@@ -33,6 +33,7 @@ class DataAdapter (private var list : ArrayList<DataModel>): RecyclerView.Adapte
         notifyDataSetChanged()
     }
 
+    //Use the method for item changed
     fun itemChanged() {
         // remove last item for test purposes
         this.list[0] = (DataModel(R.drawable.londonlove, "Thi is cool"))
