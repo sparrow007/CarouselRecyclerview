@@ -84,7 +84,7 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
 
     /**
      * Get the layout manager instance
-     * @return CoverLayout
+     * @return carouselLayoutManager
      */
      fun getCarouselLayoutManager(): CarouselLayoutManager {
         return layoutManager as CarouselLayoutManager
@@ -101,30 +101,28 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
         val center: Int = getCarouselLayoutManager().centerPosition()
 
         // Get the actual position of the i-th child view in RecyclerView
-
-        // Get the actual position of the i-th child view in RecyclerView
         val actualPos: Int = getCarouselLayoutManager().getChildActualPos(i)
+        var order: Int = i
 
         // The number of intervals from the middle item
-
-        // The number of intervals from the middle item
-        val dist = actualPos - center
-
-        var order: Int
-        // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
-        // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
-        order = if (dist < 0) {
-            i
-        } else {
-            //[>= 0] It means that the item is located to the right
-            // of the middle item, and the order needs to be reversed.
-            childCount - 1 - dist
+        if (actualPos != Int.MIN_VALUE) {
+            val dist = actualPos - center
+            // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
+            // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
+            order = if (dist < 0) {
+                i
+            } else {
+                //[>= 0] It means that the item is located to the right
+                // of the middle item, and the order needs to be reversed.
+                childCount - 1 - dist
+            }
         }
 
         if (order < 0) order = 0 else if (order > childCount - 1) order = childCount - 1
 
         return order
     }
+
 
     fun setItemSelectListener(listener: CarouselLayoutManager.OnSelected) {
         getCarouselLayoutManager().setOnSelectedListener(listener)
@@ -163,7 +161,5 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
     override fun setAdapter(adapter: Adapter<*>?) {
         super.setAdapter(adapter)
         restorePosition()
-
     }
-
 }

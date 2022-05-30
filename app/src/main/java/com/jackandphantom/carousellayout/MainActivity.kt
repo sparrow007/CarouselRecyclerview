@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         list.add(DataModel(R.drawable.hobes, "Thi is cool"))
         list.add(DataModel(R.drawable.guypro, "Thi is cool"))
         list.add(DataModel(R.drawable.joker, "Thi is cool"))
-        list.add(DataModel(R.drawable.londonlove, "Thi is cool"))
+       // list.add(DataModel(R.drawable.londonlove, "Thi is cool"))
 
         val adapter = DataAdapter(list)
 
@@ -30,9 +30,12 @@ class MainActivity : AppCompatActivity() {
             this.adapter = adapter
             set3DItem(true)
             setAlpha(true)
-            setInfinite(true)
         }
-        val carouselLayoutManager = binding.recycler.getCarouselLayoutManager()
+
+        binding.button.setOnClickListener {
+            adapter.removeData()
+        }
+
        // carouselLayoutManager.scrollToPosition(4)
     }
 }

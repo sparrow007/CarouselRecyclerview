@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.customviewimple.model.DataModel
 import com.jackandphantom.carousellayout.R
 
-class DataAdapter (private var list : List<DataModel>): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+class DataAdapter (private var list : ArrayList<DataModel>): RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
      class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
          val image : ImageView = itemView.findViewById(R.id.image)
@@ -28,8 +28,17 @@ class DataAdapter (private var list : List<DataModel>): RecyclerView.Adapter<Dat
         Glide.with(holder.image).load(list.get(position).img).into(holder.image)
     }
 
-    fun updateData(list: List<DataModel>) {
+    fun updateData(list: ArrayList<DataModel>) {
         this.list = list
         notifyDataSetChanged()
+    }
+
+    fun removeData() {
+        // remove last item for test purposes
+        val orgListSize = list.size
+        this.list[0] = (DataModel(R.drawable.londonlove, "Thi is cool"))
+        notifyItemChanged(0)
+                // this.list = this.list.subList(0, orgListSize - 1).toList()
+
     }
 }
