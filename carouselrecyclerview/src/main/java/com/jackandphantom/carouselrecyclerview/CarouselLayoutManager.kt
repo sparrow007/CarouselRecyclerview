@@ -464,8 +464,9 @@ class CarouselLayoutManager constructor(
      * It's also used in the [CarouselRecyclerview.getChildDrawingOrder] for measure the order of the child
      */
     fun getChildActualPos(index: Int): Int {
-        val child = getChildAt(index)
-        if (child!!.tag != null) {
+        val child = getChildAt(index) ?: return Int.MIN_VALUE
+
+        if (child.tag != null) {
             val tag = checkTAG(child.tag)
             if (tag != null)
             return tag.pos

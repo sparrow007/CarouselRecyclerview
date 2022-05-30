@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CarouselLayout</string>
+    <string name="removeitem">removeItem</string>
 </resources>
