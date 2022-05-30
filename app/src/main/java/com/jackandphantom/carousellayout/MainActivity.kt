@@ -32,10 +32,9 @@ class MainActivity : AppCompatActivity() {
             setAlpha(true)
         }
 
+        //Trigger the button and put your useCase to test different cases of adapter
         binding.button.setOnClickListener {
             adapter.removeData()
         }
-
-       // carouselLayoutManager.scrollToPosition(4)
     }
 }
