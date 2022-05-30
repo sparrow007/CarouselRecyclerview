@@ -20,7 +20,7 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
-[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.4)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.4/aar/)
+[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.5)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.5/aar/)
 [![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
 
 ### Gradle 
@@ -154,7 +154,8 @@ Now you can show reflection in more efficient way and 3x faster than ReflectionI
 I would recommend you to use image loading library like Glide for loading image in reflection image for better performance
 <BR>
 
-### What's New Version 1.2.4 🎉🎉  
+### What's New Version 1.2.5 🎉🎉  
+Fix Adapter notifyItemChanged and notifyItemRemoved  
 Bugs Fix (Empty List swipe)<br>
 Add setIsScrollingEnabled <br>
 Remove hardcoded alpha value  <br>
