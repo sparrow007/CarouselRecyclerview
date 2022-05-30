@@ -33,12 +33,18 @@ class DataAdapter (private var list : ArrayList<DataModel>): RecyclerView.Adapte
         notifyDataSetChanged()
     }
 
+    fun itemChanged() {
+        // remove last item for test purposes
+        this.list[0] = (DataModel(R.drawable.londonlove, "Thi is cool"))
+        notifyItemChanged(0)
+
+    }
+
+    //Use the method for checking the itemRemoved
     fun removeData() {
         // remove last item for test purposes
         val orgListSize = list.size
-        this.list[0] = (DataModel(R.drawable.londonlove, "Thi is cool"))
-        notifyItemChanged(0)
-                // this.list = this.list.subList(0, orgListSize - 1).toList()
-
+        this.list = this.list.subList(0, orgListSize - 1).toList() as ArrayList<DataModel>
+        notifyItemRemoved(orgListSize - 1)
     }
 }
