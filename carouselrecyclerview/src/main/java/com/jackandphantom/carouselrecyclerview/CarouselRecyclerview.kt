@@ -104,8 +104,9 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
         val actualPos: Int = getCarouselLayoutManager().getChildActualPos(i)
         var order: Int = i
 
-        // The number of intervals from the middle item
         if (actualPos != Int.MIN_VALUE) {
+
+            // The number of intervals from the middle item
             val dist = actualPos - center
             // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
             // [< 0] indicates that the item is located to the left of the middle item and can be drawn in order
