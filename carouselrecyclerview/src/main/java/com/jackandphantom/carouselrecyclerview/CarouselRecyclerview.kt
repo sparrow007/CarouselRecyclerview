@@ -83,6 +83,15 @@ class CarouselRecyclerview(context: Context, attributeSet: AttributeSet) : Recyc
     }
 
     /**
+     * Set orientation of CarouselRecyclerView
+     * @param orientation must be either [RecyclerView.HORIZONTAL] or [RecyclerView.VERTICAL]
+     */
+    fun setOrientation(@Orientation orientation: Int) {
+        carouselLayoutManagerBuilder.setOrientation(orientation)
+        layoutManager = carouselLayoutManagerBuilder.build()
+    }
+
+    /**
      * Get the layout manager instance
      * @return carouselLayoutManager
      */
