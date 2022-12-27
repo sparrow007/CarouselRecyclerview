@@ -20,8 +20,8 @@ Create carousel effect in recyclerview with the CarouselRecyclerview in a simple
 
 ## Including in your project
 
-[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.5)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.5/aar/)
-[![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow07/CarouselRecyclerview)
+[![Maven Central with version prefix filter](https://img.shields.io/maven-central/v/com.github.sparrow007/carouselrecyclerview/1.2.6)](https://search.maven.org/artifact/com.github.sparrow007/carouselrecyclerview/1.2.6/aar/)
+[![CarouselRecyclerview](https://jitpack.io/v/sparrow007/CarouselRecyclerview.svg)](https://jitpack.io/#sparrow007/CarouselRecyclerview)
 
 ### Gradle 
 Add below codes to your **root** `build.gradle` file (not your module build.gradle file).
@@ -35,7 +35,7 @@ allprojects {
 And add a dependency code to your **module**'s `build.gradle` file.
 ```gradle
 dependencies {
-   implementation 'com.github.sparrow007:carouselrecyclerview:1.2.5'
+   implementation 'com.github.sparrow007:carouselrecyclerview:1.2.6'
 }
 ```
 
@@ -186,6 +186,7 @@ Thanks go to these wonderful people :
       <td align="center"><a href="https://github.com/mattiasrosberg"><img src="https://avatars.githubusercontent.com/u/261872?v=4" width="100px;" alt=""/><br /><sub><b>Mattias Rosberg
 </b></sub></a><br /><a href="#Contributor-Mattias" title="Contributor">💻</a></td>
           <td align="center"><a href="https://github.com/akashmi"><img src="https://avatars.githubusercontent.com/u/11882168?v=4" width="100px;" alt=""/><br /><sub><b>AKASH PATEL</b></sub></a><br /><a href="#Contributor-AKASH" title="Contributor">💻</a></td>
+     <td align="center"><a href="https://github.com/egemenhamutcu"><img src="https://avatars.githubusercontent.com/u/16029779?v=4" width="100px;" alt=""/><br /><sub><b>Egemen Hamutçu</b></sub></a><br /><a href="#Contributor-egemenhamutcu" title="Contributor">💻</a></td>
   </tr>
   </table>  
  
