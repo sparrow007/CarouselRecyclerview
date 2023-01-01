@@ -63,7 +63,7 @@ Here is a basic example of implementing carousel recyclerview in layout xml.
 ```
 
 Property infinite and 3D on Item enabled |Property infinite and alpha on Item enabled |
-| :---------------: | :---------------: | 
+| :---------------: | :---------------: |
 | <img src="./preview/3ditem.gif" align="center" width="70%"/> | <img src="./preview/alpha.gif" align="center" width="70%"/> |
 
 ## API Methods
@@ -78,6 +78,12 @@ Method | Description | Default
   fun getCarouselLayoutManager(): CarouselLayoutManager | Get the carousel layout manager instance | 
   fun getSelectedPosition(): Int | Get selected position from the layout manager | center view Position
   fun setIsScrollingEnabled(isScrollingEnabled: Boolean) | Set scrolling disabled or enabled | true
+  fun setOrientation(@Orientation orientation: Int) | Set layout orientation | RecyclerView.HORIZONTAL
+  
+  ## Vertical Orientation Preview
+  Property infinite and 3D on Item enabled |
+  | :---------------: |
+  | <img src="./preview/vertical_recyclerview.gif" align="center" width="70%"/> |
 
   ## API Methods Usage
   ```Kotlin
@@ -154,21 +160,6 @@ Now you can show reflection in more efficient way and 3x faster than ReflectionI
 I would recommend you to use image loading library like Glide for loading image in reflection image for better performance
 <BR>
 
-### What's New Version 1.2.5 🎉🎉  
-Fix Adapter notifyItemChanged and notifyItemRemoved  
-Bugs Fix (Empty List swipe)<br>
-Add setIsScrollingEnabled <br>
-Remove hardcoded alpha value  <br>
-Fix divide by zero arithmetic exception <br>
-  
-### What's New Version 1.2.1  
-Bugs Fix (ScrollToPosition)
-
-### Version 1.2.0
-Adding reflection container
-
-### Version 1.1.0 
-Adding Support for orientation changes
 
 ## Contribute 🤝
 If you like the project and somehow wants to contribute, you are welcome to contribute by either submitting issues, refactor, pull request Thankyou.  
