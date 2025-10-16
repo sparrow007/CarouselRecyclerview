@@ -637,8 +637,13 @@ class CarouselLayoutManager constructor(
         if (intervalDistance == 0) return
 
         selectedPosition = ((mOffsetAll / intervalDistance).toFloat()).roundToInt()
+
+        // Fix for -> https://github.com/sparrow007/CarouselRecyclerview/issues/46
+        // if (selectedPosition < 0) selectedPosition += itemCount
+        // selectedPosition = abs(selectedPosition % itemCount)
+        selectedPosition = selectedPosition % itemCount
         if (selectedPosition < 0) selectedPosition += itemCount
-        selectedPosition = abs(selectedPosition % itemCount)
+        
         //check if the listener is implemented
         //mLastSelectedPosition keeps track of last position which will prevent simple slide and same position
         if (mSelectedListener != null && selectedPosition != mLastSelectedPosition) {
