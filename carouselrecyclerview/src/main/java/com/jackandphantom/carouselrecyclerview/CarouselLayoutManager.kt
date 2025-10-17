@@ -632,6 +632,8 @@ class CarouselLayoutManager constructor(
      * calls the interface callback
      */
     private fun onSelectedCallback() {
+        if (itemCount == 0) return
+
         //Some time interval distance is returns 0 that makes [ArithmeticException]
         val intervalDistance = getIntervalDistance()
         if (intervalDistance == 0) return
